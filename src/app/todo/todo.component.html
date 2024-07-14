@@ -1,0 +1,17 @@
+<div class="todo-box">
+    <ul class="task-list">
+        <li class="task-item" *ngFor="let task of myTasks"> 
+            <div class="grow1">
+                <del *ngIf="task.isComplete; else smpl"> {{ task.title }} </del> 
+                <ng-template #smpl > {{task.title}} </ng-template> 
+            </div>
+            <button (click)="completeTask(task.idx)">✔️</button> 
+            <button (click)="removeTask(task.idx)">❌</button> 
+        </li>
+    </ul>
+
+    <div class="add-task">
+        <input type="text" (keyup.enter)="addTask()" [(ngModel)]="todo_str"/>
+        <button (click)="addTask()">Add Task</button> 
+    </div>
+</div>
